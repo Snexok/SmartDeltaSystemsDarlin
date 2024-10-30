@@ -1,0 +1,34 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: sds_students
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./back
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/sds_students
+      SPRING_DATASOURCE_USERNAME: user
+      SPRING_DATASOURCE_PASSWORD: password
+      OAUTH_CLIENT_ID: Ov23liw5ALbvTcsAiCTC
+      OAUTH_CLIENT_SECRET: 5d5c335ea93c92ca45ad693ad5c0ac2bf7ca733b
+      CORS_ALLOWED_ORIGINS: http://localhost
+    depends_on:
+      - postgres
+    ports:
+      - "8081:8081"
+
+  front:
+    build: ./front
+    ports:
+      - "80:80"
+
+volumes:
+  postgres_data:
