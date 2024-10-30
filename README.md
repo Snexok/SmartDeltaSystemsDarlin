@@ -1,19 +1,21 @@
 Для запуска проекта в Docker, нужно ввести в терминал следующие команды:
-./back/mvnw -f ./back/pom.xml clean package
-docker-compose up --build
 
-После этого можно открыть ссылку front части приложения
+<code>./back/mvnw -f ./back/pom.xml clean package
+docker-compose up --build</code>
+
+После этого можно открыть ссылку front части приложения</br>
 http://localhost
 
-API доступно по url http://localhost:8081/api/v1
+API доступно по url</br>
+http://localhost:8081/api/v1
 
 Curl запросы:
 
-Запрос на оплучение всех студентов
+<b>Запрос на получение всех студентов</b></br></br>
 curl -X GET "http://localhost:8081/api/v1/student" \
   -H "Authorization: Bearer {ACCESS_TOKEN}"
 
-Запрос на добавление студента
+<b>Запрос на добавление студента</b></br></br>
 curl -X POST "http://localhost:8081/api/v1/student" \
   -H "Authorization: Bearer {ACCESS_TOKEN}" \
   -H "Content-Type: application/json" \
@@ -26,7 +28,7 @@ curl -X POST "http://localhost:8081/api/v1/student" \
         "avgRating": 4.5
       }'
 
-Запрос на обновление студента
+<b>Запрос на обновление студента</b></br></br>
 curl -X PUT "http://localhost:8081/api/v1/student" \
   -H "Authorization: Bearer {ACCESS_TOKEN}" \
   -H "Content-Type: application/json" \
@@ -38,6 +40,6 @@ curl -X PUT "http://localhost:8081/api/v1/student" \
         "avgRating": 4.7
       }'
 
-Запрос на удаление студента
+<b>Запрос на удаление студента</b></br></br>
 curl -X DELETE "http://localhost:8081/api/v1/student/{id}" \
   -H "Authorization: Bearer {ACCESS_TOKEN}"
